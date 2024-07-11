@@ -1,0 +1,2 @@
+// resolve("foo");
+"use strict";

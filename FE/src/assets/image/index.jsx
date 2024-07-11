@@ -1,0 +1,11 @@
+import Logo from './logo.svg'
+import HeroImg from './Hero.svg'
+import Post1 from './post1.jpg'
+import PostProfile from './post-profile.jpg'
+import CTAImage from './CTA.jpg'
+import LogoFooter from './logo-footer.png'
+import CircleShape from './circle-shape.svg'
+import SampleImg from './sample.jpg'
+import UserImg from './user.png'
+import CheckIcon from './check.png'
+export { Logo, HeroImg, Post1, PostProfile, CTAImage, LogoFooter, CircleShape, SampleImg, UserImg, CheckIcon }

@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Roboto:ital,wght@0,500;0,700;1,400;1,500;1,700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --header-height: 56px;
+  }
+}
+
+@layer components {
+
+  /* nếu có @apply thì có thể dùng tailwin css
+  k có thì sài css bình thường */
+  .max-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .h-f-screen-header {
+    margin-top: theme('height.header-height');
+    height: calc(100vh - theme('height.header-height'));
+  }
+
+  .editor-btn {
+    @apply flex justify-center items-center w-8 aspect-square text-slate-700 rounded-xl hover:bg-slate-200
+  }
+
+  .active-editor-btn {
+    @apply bg-slate-200 text-slate-700
+  }
+
+  .limited-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+    /* Adjust this value as needed */
+    max-height: calc(1.5em * 3);
+    /* line-height * number of lines */
+  }
+}
