@@ -12,7 +12,7 @@ function CommentsContainer({ className, user, comments, currentSlugPost }) {
     mutationFn: ({ desc, slug, parentId, replyOnUser }) => createComment({ desc, slug, parentId, replyOnUser, token: user?.token }),
     onSuccess: () => {
       queryClient.invalidateQueries(['blog', currentSlugPost])
-      toast.success('Your comment is sent successfully, it will be visible after admin approval')
+      toast.success('Your comment is sent successfully')
       setAffectedComment(null)
     },
     onError: () => {
@@ -43,6 +43,7 @@ function CommentsContainer({ className, user, comments, currentSlugPost }) {
   })
   const addNewComment = ({ value, parentId = null, replyOnUser = null }) => {
     try {
+      if (!user?.token) return toast.error('You need to login to comment')
       createCommentMutation.mutate({ desc: value, slug: currentSlugPost, parentId, replyOnUser })
     } catch (error) {
       console.log(error)

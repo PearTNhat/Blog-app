@@ -12,18 +12,10 @@ function Header() {
   const isSignUp = Boolean(useMatch('/register'))
   const userState = useSelector((state) => state.user.userInfo)
   const [navVisible, setNavVisible] = useState(false)
-  const [dropDownProfile, setDropdownProfile] = useState(false)
   const signInOrSignUp = isSignUp ? '/login' : '/register' // in Register page, we have a link to Login page, and vice versa
   const handleNavVisible = () => {
     setNavVisible(!navVisible)
   }
-  useEffect(() => {
-    if (userState?.token) {
-      setDropdownProfile(true)
-    } else {
-      setDropdownProfile(false)
-    }
-  }, [userState?.token])
   return (
     <section className="fixed bg-white h-[56px] left-0 right-0 top-0 z-50">
       <header className="max-container mx-auto h-[var(--header-height)] w-full flex justify-between items-center">
@@ -52,7 +44,7 @@ function Header() {
             ))}
 
           </ul>
-          {dropDownProfile ? (
+          {userState?.token ? (
             <DropDownProfile />
           ) : (
             <Button outline roundFull to={signInOrSignUp}>
