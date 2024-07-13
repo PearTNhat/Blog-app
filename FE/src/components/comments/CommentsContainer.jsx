@@ -7,6 +7,7 @@ import toast from 'react-hot-toast'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 function CommentsContainer({ className, user, comments, currentSlugPost }) {
   const queryClient = useQueryClient()
+  // to show the form to reply or edit comment
   const [affectedComment, setAffectedComment] = useState(null)
   const createCommentMutation = useMutation({
     mutationFn: ({ desc, slug, parentId, replyOnUser }) => createComment({ desc, slug, parentId, replyOnUser, token: user?.token }),

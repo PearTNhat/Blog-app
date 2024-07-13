@@ -44,13 +44,13 @@ function CropEasy({ photo, setIsOpenCrop }) {
       const croppedImage = await getCroppedImg(photo.url, croppedAreaPixels)
       staleUrl && URL.revokeObjectURL(staleUrl)
       staleUrl = croppedImage.url
+      console.log('croppedImage.file', croppedImage.file)
       const file = new File([croppedImage.file], `${photo?.file?.name}`, { type: photo?.file?.type })
       const formData = new FormData()
       formData.append(KEY_PICTURE, file)
       pictureMutation.mutate({ formData })
     } catch (error) {
       toast.error('Error when crop image')
-      console.log(error)
     }
   }
   return (

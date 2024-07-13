@@ -14,7 +14,9 @@ import { useSelector } from 'react-redux'
 
 const activeNavName = {
   '/admin/posts/manage': 'posts',
+  '/admin/categories/manage/': 'posts',
   '/admin/comments': 'comments',
+  '/admin/user/manage': 'comments',
   '/admin': 'dashboard'
 }
 
@@ -50,6 +52,9 @@ function Header() {
       setIsMenuOpen(false)
     }
   }, [width])
+  useEffect(() => {
+    setIsActiveNavName(activeNavName[location.pathname])
+  }, [location.pathname])
   return (
     <header className="max-container flex justify-between w-full md:w-auto md:p-0 select-none border">
       <Link to="/" className="md:hidden">
@@ -84,6 +89,7 @@ function Header() {
                     name={item.name}
                     Icon={item.icon}
                     title={item.title}
+                    setIsMenuOpen={setIsMenuOpen}
                     isActiveNavName={isActiveNavName}
                     setIsActiveNavName={setIsActiveNavName}
                   />
@@ -94,6 +100,7 @@ function Header() {
                     name={item.name}
                     Icon={item.icon}
                     content={item.content}
+                    setIsMenuOpen={setIsMenuOpen}
                     isActiveNavName={isActiveNavName}
                     setIsActiveNavName={setIsActiveNavName}
                     handleCreatePost={handleCreatePost}

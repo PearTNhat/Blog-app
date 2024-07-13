@@ -69,7 +69,7 @@ function ManageUsers() {
       setCurrentPage={setCurrentPage}
     >
       <>
-        {usersData.data?.data?.map((user, index) => (
+        {usersData.data?.data?.map((user) => (
           <tr key={user._id}>
             <td className="p-4 gap-2 border-gray-200 border-b text-sm">
               <div className="flex gap-3 items-center justify-start">

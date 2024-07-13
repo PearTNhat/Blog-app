@@ -2,13 +2,13 @@ import { TbDashboard } from 'react-icons/tb'
 import { FaComments, FaUser } from 'react-icons/fa'
 import { MdDashboard } from 'react-icons/md'
 const navItems = [
-  {
-    title: 'Dashboard',
-    name: 'dashboard',
-    icon: TbDashboard,
-    link: '/admin',
-    type: 'link'
-  },
+  // {
+  //   title: 'Dashboard',
+  //   name: 'dashboard',
+  //   icon: TbDashboard,
+  //   link: '/admin',
+  //   type: 'link'
+  // },
   {
     title: 'Comments',
     name: 'comments',

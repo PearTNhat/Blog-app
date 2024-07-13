@@ -31,7 +31,6 @@ function ProfilePicture({ avatar }) {
       toast.error('Update picture failed')
     }
   })
-
   const handleFileChange = (e) => {
     const file = e.target.files[0]
     if (file) {
@@ -39,6 +38,7 @@ function ProfilePicture({ avatar }) {
     } else {
       setPhoto(null)
     }
+    e.target.value = null;
     setIsOpenCrop(true)
   }
   useEffect(() => {
@@ -57,7 +57,6 @@ function ProfilePicture({ avatar }) {
       pictureMutation.mutate({ formData })
     } catch (error) {
       toast.error('Error when delete image')
-      console.log(error)
     }
   }
   return (

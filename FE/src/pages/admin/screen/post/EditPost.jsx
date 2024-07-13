@@ -17,6 +17,7 @@ import toast from 'react-hot-toast'
 import Editor from '~/components/edit/Editor'
 import MultiSelectTagDropDown from '../../component/selectDropDown/MultiSelectTagDropDown'
 import { categoriesToOptions, promiseOptionsCategories } from '~/utils/multiSelectTagUtils'
+import { formatText } from '~/utils/formatText'
 function EditPost() {
   const { slug } = useParams()
   const navigate = useNavigate()
@@ -59,10 +60,12 @@ function EditPost() {
       }
       toast.success('Update post successfully')
     },
+
     onError: (error) => {
       toast.error(error.message)
     }
   })
+  console.log(slug);
   const deletePhotoHandler = () => {
     setPhoto(null)
     setInitialPhoto(null)
@@ -71,7 +74,7 @@ function EditPost() {
     setPhoto(e.target.files[0])
   }
   const changeSlugHandler = (e) => {
-    const newSlug = e.target.value.replace(/\s+/g, '-').toLowerCase()
+    const newSlug = formatText(e.target.value)
     setAttrPost({ ...attrPost, slug: newSlug })
   }
   const updatePostHandler = async () => {

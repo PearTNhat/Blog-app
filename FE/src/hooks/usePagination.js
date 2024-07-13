@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 const DOTS = '...'
 function usePagination({ siblingCount = 1, totalPageCount, currentPage }) {
   const paginationRange = useMemo(() => {
+    // total page numbers to be shown in the pagination
     const totalPageNumbers = 5 + siblingCount
     // state 1 : if page number less than totalPageNumbers
     if (totalPageNumbers >= totalPageCount) {

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { GoChevronUp } from 'react-icons/go'
 import { LuChevronDown } from 'react-icons/lu'
 import { Link } from 'react-router-dom'
-function NavCollapse({ title, Icon, content, name, isActiveNavName, setIsActiveNavName, handleCreatePost }) {
+function NavCollapse({ title, Icon, content, name, isActiveNavName, setIsMenuOpen, setIsActiveNavName, handleCreatePost }) {
   const [isCollapse, setIsCollapse] = useState(false)
   const toggleCollapseHandler = () => {
     setIsCollapse(!isCollapse)
@@ -17,9 +17,8 @@ function NavCollapse({ title, Icon, content, name, isActiveNavName, setIsActiveN
         }}
       >
         <span
-          className={`${
-            isActiveNavName === name ? 'text-primary font-bold' : 'text-dark-light'
-          } flex justify-between items-center gap-2`}
+          className={`${isActiveNavName === name ? 'text-primary font-bold' : 'text-dark-light'
+            } flex justify-between items-center gap-2`}
         >
           {<Icon />}
           {title}
@@ -33,12 +32,23 @@ function NavCollapse({ title, Icon, content, name, isActiveNavName, setIsActiveN
               {item.link === 'button' ? (
                 <button
                   className="hover:bg-blue-100 w-full text-left rounded-lg mt-1 px-2 py-1"
-                  onClick={handleCreatePost}
+                  onClick={() => {
+                    if (window.innerWidth <= 768) {
+                      setIsMenuOpen(false)
+                    }
+                    handleCreatePost()
+                  }}
                 >
                   {item.title}
                 </button>
               ) : (
-                <Link className="hover:bg-blue-100 w-full block rounded-lg mt-1 px-2 py-1" to={item.link}>
+                <Link className="hover:bg-blue-100 w-full block rounded-lg mt-1 px-2 py-1" to={item.link}
+                  onClick={() => {
+                    if (window.innerWidth <= 768) {
+                      setIsMenuOpen(false)
+                    }
+                  }}
+                >
                   {item.title}
                 </Link>
               )}

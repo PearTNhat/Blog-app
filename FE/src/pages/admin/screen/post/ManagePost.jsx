@@ -5,6 +5,7 @@ import { stables } from '~/constants/stables'
 import useDataTable from '~/hooks/useDataTable'
 import { deletePost, getAllPosts } from '~/services/post'
 import DataTable from '../../component/DataTable'
+import { usePagination } from '~/hooks/usePagination'
 
 function ManagePost() {
   const {
@@ -60,12 +61,12 @@ function ManagePost() {
               <div className="flex flex-wrap">
                 {post.categories?.length > 0
                   ? post.categories?.map((category) => {
-                      return (
-                        <span key={category._id} className="mr-2">
-                          {category.title}
-                        </span>
-                      )
-                    })
+                    return (
+                      <span key={category._id} className="mr-2">
+                        {category.title}
+                      </span>
+                    )
+                  })
                   : 'Uncategorized'}
               </div>
             </td>
@@ -82,11 +83,11 @@ function ManagePost() {
               {post.tags?.length === 0
                 ? 'No tag'
                 : post.tags?.map((tag, index) => (
-                    <span key={tag}>
-                      {tag}
-                      {index !== post.tags.length - 1 && ', '}
-                    </span>
-                  ))}
+                  <span key={tag}>
+                    {tag}
+                    {index !== post.tags.length - 1 && ', '}
+                  </span>
+                ))}
             </td>
             <td className="p-4 border-gray-200 border-b text-sm">
               <button
