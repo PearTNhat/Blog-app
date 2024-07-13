@@ -17,7 +17,7 @@ const PostSchema = new Schema(
   },
   { timestamps: true, toJSON: { virtuals: true } }
 );
-
+// như kiểu 1 post có nhiều comment
 PostSchema.virtual("comments", {
   // virtual populate , sẻ có attribute comments trong Post ( phải dùng toJSON: { virtuals: true } mới có comments)
   // mục đích là ta muốn dùng id post để lấy các comment của post đó

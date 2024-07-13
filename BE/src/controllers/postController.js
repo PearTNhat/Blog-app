@@ -33,6 +33,7 @@ const updatePost = async (req, res, next) => {
     const post = await Post.findOne({ slug: req.params.slug });
     if (!post) {
       let error = new Error("Post not found");
+      error.statusCode = 404;
       return next(error);
     }
     const handleData = (req, res, data) => {
@@ -103,7 +104,6 @@ const updatePost = async (req, res, next) => {
       }
       handleUpdatePost(req.body.documents);
       const newPostUpdate = await post.save();
-      console.log("update post");
       res.status(200).json({
         message: "Post updated successfully",
         data: newPostUpdate,

@@ -7,7 +7,7 @@ const UserSchema = new Schema(
     name: { type: String, min: 6, max: 50, required: true },
     email: { type: String, min: 6, required: true, unique: true },
     password: { type: String, min: 6, max: 50, required: true },
-    verified: { type: Boolean, default: false },
+    verified: { type: Boolean, default: true },
     admin: { type: Boolean, default: false },
   },
   {
