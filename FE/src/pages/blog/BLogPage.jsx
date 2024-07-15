@@ -61,11 +61,12 @@ function BLogPage() {
         />
         <div className="mb-4 flex justify-center">
           <AsyncSelect
-            defaultValue={category && { value: category, label: category }}
+            value={category && { value: category, label: category }}
             loadOptions={promiseOptionsCategories}
             defaultOptions
             onChange={(newOption) => {
-              setCategory(newOption.label)
+              const label = newOption.label === "Remove category" ? "" : newOption.label
+              setCategory(label)
             }}
             placeholder="Select categories"
             className="relative z-20  w-[300px]"

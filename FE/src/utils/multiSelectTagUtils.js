@@ -9,6 +9,6 @@ const filterCategories = (initialValue, categories) => {
 }
 const promiseOptionsCategories = async (initialValue) => {
   const { data: categories } = await getAllPostCategories({ limit: 20 })
-  return filterCategories(initialValue, categories)
+  return filterCategories(initialValue, [{ _id: '', title: 'Remove category' }, ...categories])
 }
 export { categoriesToOptions, filterCategories, promiseOptionsCategories }

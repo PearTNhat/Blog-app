@@ -27,7 +27,7 @@ function ManageUsers() {
     mutateDeleteFn: ({ slug, token }) => {
       return deleteUser({ userId: slug, token })
     },
-    deleteMessage: 'Delete post successfully'
+    deleteMessage: 'Delete user successfully'
   })
   const handleDeleteUser = ({ userId }) => {
     if (window.confirm('Are you sure you want to delete this user?')) {
@@ -61,6 +61,7 @@ function ManageUsers() {
       title={'Users '}
       submitSearchTitle={submitSearchTitle}
       search={search}
+      placeholder="Search user"
       setSearch={setSearch}
       tableHeaderTitleList={['Name', 'Email', 'Verified', 'Admin', '']}
       data={usersData}

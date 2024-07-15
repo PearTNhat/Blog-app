@@ -147,7 +147,6 @@ function Register() {
               />
               {errors.confirmPassword && <p className="text-red-500 text-sm">{errors.confirmPassword.message}</p>}
             </InputGroup>
-            <p className="text-primary  text-sm mt-2 font-bold">Forgot password?</p>
             <div className="my-4">
               <Button widthFull disabled={!isValid || registerMutation.isLoading} type="submit">
                 Register

@@ -100,7 +100,7 @@ function ManageCategories() {
                   >
                     Delete
                   </button>
-                  <Link to={`/admin/categories/manage/${category._id}`} className="text-green-600 hover:text-green-900">
+                  <Link to={`/admin/categories/manage/edit/${category._id}`} className="text-green-600 hover:text-green-900">
                     Edit
                   </Link>
                 </td>

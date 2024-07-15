@@ -30,7 +30,7 @@ function EditCategory() {
       return updateCategory({ categoryId, title, token })
     },
     onSuccess: () => {
-      navigate(`/admin/posts/manage/categories`, { replace: true })
+      navigate(`/admin/categories/manage/`, { replace: true })
       toast.success('Update post successfully')
     },
     onError: () => {
@@ -59,7 +59,7 @@ function EditCategory() {
         <Button
           cancel
           onClick={() => {
-            navigate(`/admin/posts/manage/categories`, { replace: true })
+            navigate(`/admin/categories/manage`, { replace: true })
           }}
         >
           Cancel

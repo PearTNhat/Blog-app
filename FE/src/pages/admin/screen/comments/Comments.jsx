@@ -52,6 +52,7 @@ function Comments() {
       search={search}
       setSearch={setSearch}
       tableHeaderTitleList={['Author', 'Comment', 'In response to', 'Created at', '']}
+      placeholder="Search comment"
       data={commentsData}
       staleSearch={staleSearch}
       currentPage={currentPage}
@@ -102,9 +103,8 @@ function Comments() {
           </td>
           <td className="p-4 border-gray-200 border-b text-sm">
             <button
-              className={`mr-3 ${
-                comment.checked ? 'text-yellow-400 hover:text-yellow-600' : 'text-green-400 hover:text-green-600'
-              }`}
+              className={`mr-3 ${comment.checked ? 'text-yellow-400 hover:text-yellow-600' : 'text-green-400 hover:text-green-600'
+                }`}
               onClick={() => updateCommentHandler({ check: !comment.checked, commentId: comment._id })}
             >
               {comment.checked ? 'Unapproved' : 'Approve'}

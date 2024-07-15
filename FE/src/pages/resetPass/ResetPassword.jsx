@@ -4,16 +4,16 @@ import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { FaEyeSlash } from 'react-icons/fa'
 import { IoEyeSharp } from 'react-icons/io5'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Button from '~/components/Button'
 import Input from '~/components/InputGroup/Input'
 import InputGroup from '~/components/InputGroup/InputGroup'
 import Label from '~/components/InputGroup/Label'
 import MainLayout from '~/sections/MainLayout'
 import { resetPassword } from '~/services/user'
-
 function ResetPassword() {
   const { id, token } = useParams()
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const {
     register,
@@ -32,7 +32,8 @@ function ResetPassword() {
       return resetPassword({ id, token, password, confirmPassword })
     },
     onSuccess: (data) => {
-      toast.success(data.message)
+      toast.success("Change password success fully")
+      navigate('/', { replace: true });
     },
     onError: (error) => {
       toast.error(error.message)

@@ -9,6 +9,7 @@ function DataTable({
   submitSearchTitle,
   search,
   setSearch,
+  placeholder = 'Search title',
   tableHeaderTitleList,
   data,
   staleSearch,
@@ -29,7 +30,7 @@ function DataTable({
             <InputGroup>
               <Input
                 type="text"
-                placeholder="Search title"
+                placeholder={placeholder}
                 className="px-4 py-[0.625rem] border-gray-200 border-[1px] rounded-lg outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 value={search}
                 onChange={(e) => {

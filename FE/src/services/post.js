@@ -1,6 +1,6 @@
 import { http } from '~/utils/http'
 
-const getAllPosts = async ({ search = '', page = 1, limit = 3, category = '' }) => {
+const getAllPosts = async ({ search = '', page = 1, limit = 6, category = '' }) => {
   try {
     const { data, headers } = await http.get(`posts?search=${search}&page=${page}&limit=${limit}&category=${category}`)
     return { data, headers }

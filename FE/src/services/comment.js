@@ -64,7 +64,7 @@ const deleteComment = async ({ commentId, token }) => {
     throw new Error(error.message)
   }
 }
-const getAllComments = async ({ token, search = '', page = 1, limit = 3 }) => {
+const getAllComments = async ({ token, search = '', page = 1, limit = 6 }) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`
