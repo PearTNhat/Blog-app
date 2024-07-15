@@ -1,7 +1,6 @@
 import nodemailer from "nodemailer";
 import "dotenv/config";
 const sendMail = async (to, link) => {
-  console.log("to", to);
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,

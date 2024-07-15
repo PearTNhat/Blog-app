@@ -159,7 +159,6 @@ var updatePost = exports.updatePost = /*#__PURE__*/function () {
                     return post.save();
                   case 18:
                     newPostUpdate = _context2.sent;
-                    console.log("update post");
                     res.status(200).json({
                       message: "Post updated successfully",
                       data: newPostUpdate

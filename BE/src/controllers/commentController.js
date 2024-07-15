@@ -83,7 +83,7 @@ const updateComment = async (req, res, next) => {
       let error = new Error("Comment not found");
       return next(error);
     }
-    if (newComment.user.admin && check !== undefined) {
+    if (req.user.admin && check !== undefined) {
       newComment.checked =
         typeof check !== "undefined" ? check : newComment.checked; // tranh truong hop check = undefined vi kh truyền check vào
       await newComment.save();
@@ -116,7 +116,10 @@ const deleteComment = async (req, res, next) => {
       let error = new Error("Comment not found");
       return next(error);
     }
-    if (myComment.user._id.toString() !== req.user._id.toString()) {
+    if (
+      !req.user.admin &&
+      myComment.user._id.toString() !== req.user._id.toString()
+    ) {
       let error = new Error("You are not authorized to delete this comment");
       return next(error);
     }

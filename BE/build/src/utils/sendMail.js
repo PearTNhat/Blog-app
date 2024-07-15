@@ -43,7 +43,7 @@ var sendMail = /*#__PURE__*/function () {
           main = function _main2() {
             return _main.apply(this, arguments);
           };
-          console.log("to", to);
+    
           transporter = _nodemailer["default"].createTransport({
             host: "smtp.gmail.com",
             port: 587,

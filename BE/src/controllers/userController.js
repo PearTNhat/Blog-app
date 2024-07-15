@@ -141,6 +141,7 @@ const updateProfile = async (req, res, next) => {
       email: updateUserProfile.email,
       verified: updateUserProfile.verified,
       admin: updateUserProfile.admin,
+      token: await updateUserProfile.generateToken(),
     });
   } catch (error) {
     next(error);
@@ -242,9 +243,13 @@ const deleteUser = async (req, res, next) => {
     const postIdToDelete = postToDelete.map((post) => post._id);
     await Post.deleteMany({ user: userId });
 
-    await fileRemover(user.avatar);
+    if (user.avatar !== "") {
+      await fileRemover(user.avatar);
+    }
 
-    await Comment.deleteMany({ post: { $in: postIdToDelete } });
+    await Comment.deleteMany({
+      $or: [{ post: { $in: postIdToDelete } }, { user: userId }],
+    });
     await User.deleteOne({ _id: userId });
     await session.commitTransaction();
     res.status(200).json("Delete user successfully");
@@ -266,7 +271,6 @@ const updateAdminUser = async (req, res, next) => {
       throw new Error("You can't change your role");
     }
     const user = await User.findOne({ _id: userId });
-    console.log(typeof admin !== "undefined");
     user.admin = typeof admin !== "undefined" ? !user.admin : user.admin;
     await user.save();
     res.status(200).json("Update admin successfully");

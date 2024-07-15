@@ -18,7 +18,6 @@ var invalidPathHandler = exports.invalidPathHandler = function invalidPathHandle
   // Bởi vì k có res nào bắt path sai hết nên nó lại vào đây
   // nếu có thêm tham số err (4 tham số) thì  khi nào dùng next(err) thì nó sẽ vào 4 tham số
   // next() là chạy vào middelware tiếp theo
-  console.log();
   var error = new Error("Invalid path");
   error.statusCode = 404;
   // đưa vào errorResponseHandler
